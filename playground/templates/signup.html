@@ -7,7 +7,9 @@
     <title>registration</title>
 </head>
 <body>
-    <label for="username" >USER NAME</label>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="username" >USER NAME</label>
     <input type="text" id="username"><br>
     <label for="firstname">FIRST NAME</label>
     <input type="text" id='firstname'></br>
@@ -23,7 +25,9 @@
     <input type="email" id='emaiil'></br>
     <label for="email2">confirm your email</label>
     <input type="email" id='email2'></br>
-    <input type="button" value="sign up">
+    <input type="submit" value="sign up">
+    
+    </form>
      
 </body>
 </html>
