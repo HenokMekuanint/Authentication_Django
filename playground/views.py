@@ -25,11 +25,16 @@ def signup(request):
     return render(request,'signup.html')
 def signin(request):
     if request.method=="Post":
-        username=request.POST['username']
+        username1=request.POST['username']
         pass1=request.POST['pass1']
-        user=authenticate(username=username,password=pass1)
-    if user is not None:
-        login(request,user)
+        user=authenticate(username=username1,password=pass1)
+        if user is not None:
+            login(request,user)
+            fname=user.first_name
+            return redirect(request,"index.html",{'fname':fname})
+        else:
+            messages.error(request,"bad credentails")
+        redirect(request,"home")
     return render(request,'signin.html')
 def signout(request):
     return render(request,'signout.html')
