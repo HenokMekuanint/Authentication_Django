@@ -7,14 +7,15 @@
     <title>login_page</title>
 </head>
 <body>
-    <h1>Welcome to the login page</h1>
-     <p> your account has been set ssuccessfully please check your email</p>
-
-     <label for="username">USER NAME</label>
-    <input type="text" id="username"><br>
-
-    <label type="password" id="password">PASSWORD</label>
-    <input type="password" id="password"></br>
+    <h1>signup</h1>
+     <form method="POST" action="/signup">
+        {% csrf_token %}
+        <label for="username">USER NAME</label>
+        <input type="text" id="username" id="username" placeholder="enter your user name"><br>
     
+        <label type="password" id="pass1">PASSWORD</label>
+        <input type="password" id="pass1" name="pass1" placeholder="enter your password"></br>
+        <button type="submit">Sign in</button>
+     </form>
 </body>
 </html>
