@@ -7,24 +7,24 @@
     <title>registration</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="/signup" method="Post">
         {% csrf_token %}
         <label for="username" >USER NAME</label>
     <input type="text" id="username" name="username" placeholder="username"><br>
     <label for="firstname">FIRST NAME</label>
-    <input type="text" id='firstname' name='firstname' placeholder="firstname"></br>
+    <input type="text" id='firstname' name='fname' placeholder="firstname"></br>
     
     <label for="lastname">Last NAME</label>
-    <input type="text" id='lastname' name='lastname' placeholder="Lastname"></br>
+    <input type="text" id='lastname' name='lname' placeholder="Lastname"></br>
 
     
-    <label type="password" id="password" name="password">PASSWORD</label>
-    <input type="password" id="password" placeholder="passsword"></br>
+    <label for="password">PASSWORD</label>
+    <input type="password" id="password" placeholder="passsword" name="pass1"></br>
 
-    <label for="email" placeholder="enter your username">email</label>
-    <input type="email" id='email' name="email" placeholder="enter email"></br>
-    <label for="email2">confirm your email</label>
-    <input type="email" id='email2' name="email2" placeholder="please confirm your email address"></br></br>
+    <label for="pass2" >confirm your password</label>
+    <input type="password" id='pass2' name="password" placeholder="please confirm your password"></br>
+    <label for="email">confirm your email</label>
+    <input type="email" id='email' name="email" placeholder="enter your email please"></br></br>
     <button type='submit'>Submit</button>
     
     </form>
