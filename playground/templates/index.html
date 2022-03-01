@@ -7,23 +7,27 @@
     <title>login_page</title>
 </head>
 <body>
-    {% for message in message%}
-    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
-        <strong>message:</strong>{{message}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
     </div>
-    {%endfor%}
-    <h3>welcome to henok</h3>
-    {%if user.is_authenticated%}
-    <h1>Hello {{fname}}</h1>
-    <h1>YOU are successfully logged in</h1>
-    <button type="submit"><a href="/signout">Signout</a></button>
-    {%else%}
+    {% endfor %}
+
+    <h3>Welcome to GeeksForGeeks!</h3>
+
+
+    {% if user.is_authenticated %}
+    <h3>Hello {{fname}}!</h3>
+    <h4>You're successfully logged in.</h4>
+    <button type="submit"><a href="/signout">SignOut</a></button>
+    {% else %}
+    <button type="submit"><a href="/signup">SignUp</a></button>
+    <br/>
+    <br/>
     <button type="submit"><a href="/signin">SignIn</a></button>
-    <button type="submit"><a href="/signup">Signup</a></button>
-     {%endif%}
-    <script src="" async defer></script>
+    {% endif %}
 </body>
 </html>

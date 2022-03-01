@@ -76,8 +76,13 @@ WSGI_APPLICATION = 'Django_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'hena',
+        'USER':'root',
+        'PASSWORD':'0962081628@hm',
+        'port':3306,
+        'HOST':'127.0.0.1'
+
     }
 }
 
