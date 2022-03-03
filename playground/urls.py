@@ -1,11 +1,10 @@
 from unicodedata import name
 from django.urls import path
 from . import views
-
+from django.contrib.auth import views as auth_views
+from django.views.generic.base import TemplateView
 urlpatterns = [
-    path('',views.index),
-    path('signup',views.signup,name='sign-up'),
-    path('signin',views.signin,name='sign-in'),
-    path('signout',views.signout,name='sign-out')
-    
+    path('',views.home,name='home'),
+    path('accounts/login',auth_views.LoginView.as_view(),name='login'),
+    path('',TemplateView.as_view(template_name='HOME.html'),name="home")    
 ]
