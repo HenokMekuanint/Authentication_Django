@@ -12,7 +12,7 @@ from django.core.files.storage import FileSystemStorage
 def home(request):
     return render(request,'home.html')
 def user_signup(request):
-    if request.methon=='POST':
+    if request.method=='POST':
         user_email=request.POST['email']
         username=request.POST['username']
         firstname=request.POST['firstname']
@@ -27,7 +27,7 @@ def user_signup(request):
             return redirect('home')
         except:
             messages.add_message(request,messages.ERROR,'can not sign up')
-            return render(request,'user_profile/signup.html')
+            return render(request,'signup.html')
     return render(request,'signup.html')
 def user_login(request):
     if request.method=='POST':
