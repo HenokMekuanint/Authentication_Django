@@ -1,7 +1,21 @@
-{% extends 'base.html' %}
- {% block title %} Home {% endblock%}
- {%block body%}
- <form action="" method="Post">
+<DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>home</title>
+    </head>
+<body>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    {% endfor %}
+    
+    <a href="{% url 'home'%}">home</a>
+ <form  method="POST">
     {% csrf_token %}
     <label for="username" >USER NAME</label>
 <input type="text" id="username" name="username" placeholder="username"><br>
@@ -20,4 +34,5 @@
 <button type='submit'>Submit</button>
 
 </form>
-{% endblock %}
+</body>
+</html>

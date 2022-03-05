@@ -1,12 +1,26 @@
-{% extends 'base.html' %}
- {% block title %} Home {% endblock%}
- {%block body%}
+<DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>home</title>
+    </head>
+<body>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    {% endfor %}
+    <a href="{% url 'home'%}">home</a>
  {% if user.is_authenticated%}
- <h3>hi{{user.username}}</h3>
+ <h3>hi{{firstname}}</h3>
  <a href="{% url 'profile' user_id=user.id %}">my profile</a>
  <a href="{% url 'logout'%}">my profile</a>
 {%else%}
 <a href="{% url 'signup'%}">signup</a>
 <a href="{% url 'login'%}">login</a>
 {% endif %}
-{% endblock %}
+</body>
+</html>

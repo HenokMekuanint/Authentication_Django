@@ -1,15 +1,31 @@
-{% extends 'base.html' %}
- {% block title %} Login {% endblock%}
- {%block body%}
- <form method="post">
+<DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>login</title>
+    </head>
+<body>
+    <a href="{% url 'home'%}">home</a>
+ <form method="POST" action="login">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    {% endfor %}
+    
+     {%csrf_token%}
      <div>
          <label>username</label>
-         <input type="password" name="username"></input>
-         <label>password</label>
-         <input type="password" name="password"></input>
+         <input type="text" name="username"></input>
+         <label>email</label>
+         <input type="email" name="email"></input>
      </div>
      <div>
-         <button type="submit">login</button>
+         <button>login</button>
      </div>
     </form> 
-{% endblock %}
+</body>
+</html>
