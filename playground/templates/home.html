@@ -14,11 +14,12 @@
     </div>
     {% endfor %}
     <a href="{% url 'home'%}">home</a>
- {% if user.is_authenticated%}
+ {% if user.is_authenticated %}
  <h3>hi{{firstname}}</h3>
- <a href="{% url 'profile' user_id=user.id %}">my profile</a>
- <a href="{% url 'logout'%}">my profile</a>
+ <a href="">My profile</a>
+ <a href="">Logout</a>
 {%else%}
+{{authenticate}}
 <a href="{% url 'signup'%}">signup</a>
 <a href="{% url 'login'%}">login</a>
 {% endif %}
