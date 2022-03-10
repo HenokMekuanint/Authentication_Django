@@ -67,12 +67,9 @@ def user_login(request):
     res = list(map(itemgetter(0),u))
     res1 = list(map(itemgetter(0),e))
     if request.method=='POST':
-        user=request.user 
         username=request.POST.get('username')
         userpass=request.POST.get('password')
         check_if_user_exists = User.objects.filter(username=username).exists()
-        context={}
-        context['authenticate']=True
         if username in res and userpass in res1 and check_if_user_exists:
                 User.is_authenticated=True
                 messages.info(request, "Your have logged in successfully")
