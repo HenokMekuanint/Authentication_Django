@@ -5,6 +5,8 @@
         <title>home</title>
     </head>
 <body>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/signup.css'%}">
     {% for message in messages %}
     <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
         <strong>Message:</strong> {{ message }}
@@ -14,25 +16,41 @@
     </div>
     {% endfor %}
     
-    <a href="{% url 'home'%}">home</a>
+    <a href="{% url 'home'%}">home</a>  
+    <div class="container">
+        <div class="title">Registration</div>
  <form  method="POST">
     {% csrf_token %}
-    <label for="username" >USER NAME</label>
-<input type="text" id="username" name="username" placeholder="username"><br>
-<label for="firstname">FIRST NAME</label>
-<input type="text" id='firstname' name='firstname' placeholder="firstname"></br>
+    <div class="userdetail">
+       
+    <div class="inputbox">
+<span class="details" >First Name</span>
+<input type="text" id='firstname' name='firstname' placeholder="firstname" class="firstname">
+    </div>
+    <div class="inputbox">
+<span class="details" >Last Name</span>
+<input type="text" id='lastname' name='lastname' class="lastname" placeholder="Lastname">
+    </div>
+    
+    <div class="inputbox">
+        <span class="details"> User name</span>
+        <input type="text" id="username" name="username" placeholder="username" class="username">
+    </div>
 
-<label for="lastname">Last NAME</label>
-<input type="text" id='lastname' name='lastname' placeholder="Lastname"></br>
+    <div class="inputbox">
+<span class="details">Password</label>
+<input type="password" id="password" placeholder="passsword" name="password" class="password"></br>
+</div>
 
-
-<label for="password">PASSWORD</label>
-<input type="password" id="password" placeholder="passsword" name="password"></br>
-
-<label for="email">confirm your email</label>
-<input type="email" id='email' name="email" placeholder="enter your email please"></br></br>
-<button type='submit'>Submit</button>
-
+<div class="inputbox">
+<span>Enter your email</span>
+<input type="email" id='email' name="email" placeholder="enter your email please" class="email">
+</div>
+<div class="button">
+<button type='submit' class="btn">Register</button>
+</div>
+</div>
 </form>
+</div>
 </body>
 </html>

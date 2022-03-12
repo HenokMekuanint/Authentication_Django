@@ -127,3 +127,4 @@ STATIC_URL = '/static/'
 AUTHENTICATION_BACKENDS = (
         'django.contrib.auth.backends.ModelBackend',
     )
+CRISPY_TEMPLATE_PACK =  'bootstrap4'

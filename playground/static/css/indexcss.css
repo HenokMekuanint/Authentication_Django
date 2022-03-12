@@ -1,5 +1,4 @@
 *{
-    background-color: white;
     margin: 0;
     padding:0;
     background-color:#24242A
@@ -13,7 +12,7 @@ li,a,button{
 }
 header{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding:30px  10%;
 
@@ -23,5 +22,12 @@ header{
 
 }
 .navlinks li {
-display:inline-block
+display:inline-block;
+padding:0px 20px; 
+}
+.navlinks li a{
+    transition: all 0.3s ease 0s;
+}
+.navlinks li a:hover{
+    color:#0088a9
 }

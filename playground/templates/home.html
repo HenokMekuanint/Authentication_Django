@@ -18,17 +18,13 @@
     <header>
         <nav>
             <ul class="navlinks">
-       <li> <a href="{% url 'home'%}">home</a></li>
- {% if user.is_authenticated %}
- <li><a href="">My profile</a></li>
- <li><a href="">Logout</a></li>
-{%else%}
-{{authenticate}}
-<li><a href="{% url 'signup'%}">signup</a></li>
-<li><a href="{% url 'login'%}">login</a></li>
+                                <li> <a href="{% url 'home'%}">home</a></li>
+                                <li><a href="">My profile</a></li>
+                                <li><a href="">Logout</a></li>
+                                <li><a href="{% url 'signup'%}">signup</a></li>
+                                <li><a href="{% url 'login'%}">login</a></li>
             </ul>
         </nav>
     </header>
-{% endif %}
 </body>
 </html>
