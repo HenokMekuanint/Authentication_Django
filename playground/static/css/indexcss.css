@@ -31,3 +31,6 @@ padding:0px 20px;
 .navlinks li a:hover{
     color:#0088a9
 }
+#alertmessage{
+    color: white;
+}

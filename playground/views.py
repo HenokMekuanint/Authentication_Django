@@ -70,7 +70,9 @@ def user_login(request):
         username=request.POST.get('username')
         userpass=request.POST.get('password')
         check_if_user_exists = User.objects.filter(username=username).exists()
-        if username in res and userpass in res1 and check_if_user_exists:
+        user = authenticate(username=username, password=userpass)
+
+        if username in res and userpass in res1 and check_if_user_exists and user is not None:
                 User.is_authenticated=True
                 messages.info(request, "Your have logged in successfully")
                 messages.info(request,"hi  "+username)
@@ -79,7 +81,7 @@ def user_login(request):
             messages.info(request,"check your username or password")
             return redirect('login')
     else:
-        return render(request,'login.html',{'authenticate':'True'})
+        return render(request,'login.html')
      
 def user_logout(request):
     try:
@@ -87,26 +89,6 @@ def user_logout(request):
     except:
 
         return redirect('home')
-
-@login_required
-def user_profile(request,user_id):
-    if request.method=='POST':
-        user_obj=User.objects.get(id=user_id)
-        user_profile_obj=user_profile.objects.get(id=user_id)
-        user_img=request.Files['user_img']
-        fs_handle=FileSystemStorage()
-        img_name='images/user_{0}'.format(user_id)
-        if fs_handle.exists(img_name):
-            fs_handle.delete(img_name)
-        fs_handle.save(img_name,user_img)
-        user_profile_obj.profile_img=img_name
-        user_profile_obj.save()
-        user_profile_obj.refresh_from_db()
-        return render(request,'my_profile.html',{'my_profile':user_profile_obj})   
-    if(request.user.is_authenticated and request.user.id==user_id):
-        user_obj=User.objects.get(id=user_id)
-        user_profile=UserProfile.objects.get(id=user_id)
-        return render(request,'my_profile.html',{'my_profile':user_profile})
 
 
 

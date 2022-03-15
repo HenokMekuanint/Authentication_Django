@@ -7,24 +7,22 @@
 <body>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/indexcss.css'%}">
+    <header>
+        <nav>
+            <ul class="navlinks">
+                                <li> <a href="{% url 'home'%}">home</a></li>
+                                <li><a href="{% url 'signup'%}">signup</a></li>
+                                <li><a href="{% url 'login'%}">login</a></li>
+            </ul>
+        </nav>
+    </header>
     {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert" id="alertmessage">
         <strong>Message:</strong> {{ message }}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
     </div>
     {% endfor %}
-    <header>
-        <nav>
-            <ul class="navlinks">
-                                <li> <a href="{% url 'home'%}">home</a></li>
-                                <li><a href="">My profile</a></li>
-                                <li><a href="">Logout</a></li>
-                                <li><a href="{% url 'signup'%}">signup</a></li>
-                                <li><a href="{% url 'login'%}">login</a></li>
-            </ul>
-        </nav>
-    </header>
 </body>
 </html>
