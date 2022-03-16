@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from mysqlx import Auth
 from.models import UserProfile
 from django.core.files.storage import FileSystemStorage
 import mysql.connector
@@ -52,33 +53,43 @@ def user_signup(request):
 def user_login(request):
     con1=mysql.connector.connect(host="localhost",user="root",password="0962081628@hm",database="hena")
     cursor=con1.cursor()
-    con2=mysql.connector.connect(host="localhost",user="root",password="0962081628@hm",database="hena")
-    cursor2=con2.cursor()
     sqlcommand1="select username from auth_user"
-    sqlcommand2="select password from auth_user"
+
+
     cursor.execute(sqlcommand1)
-    cursor2.execute(sqlcommand2)
     u=[]
-    e=[]
+    
+    print(cursor)
     for i in cursor:
         u.append(i)
-    for j in cursor2:
-        e.append(j)
     res = list(map(itemgetter(0),u))
-    res1 = list(map(itemgetter(0),e))
     if request.method=='POST':
         username=request.POST.get('username')
         userpass=request.POST.get('password')
         check_if_user_exists = User.objects.filter(username=username).exists()
-        user = authenticate(username=username, password=userpass)
 
-        if username in res and userpass in res1 and check_if_user_exists and user is not None:
+        if username in res and check_if_user_exists :
                 User.is_authenticated=True
-                messages.info(request, "Your have logged in successfully")
-                messages.info(request,"hi  "+username)
-                return render(request,'home.html',)
+
+                con3=mysql.connector.connect(host="localhost",user="root",password="0962081628@hm",database="hena")
+                cursor3=con3.cursor()
+                sqlcommand3="select password from auth_user where username=%s"
+                cursor3.execute(sqlcommand3, (username,))
+                n=[]
+                for i in cursor3:
+                    n.append(i)
+                res3=list(map(itemgetter(0),n))
+                print(res3)
+
+                if res3[0]==userpass:
+                    messages.info(request, "Your have logged in successfully")
+                    messages.info(request,"hi  "+username)
+                    return render(request,'home.html',)
+                else:
+                    messages.info(request,"you have enterd incorrect password")
+                    return redirect('login')
         else:
-            messages.info(request,"check your username or password")
+            messages.info(request,"incorrect username")
             return redirect('login')
     else:
         return render(request,'login.html')
@@ -89,6 +100,7 @@ def user_logout(request):
     except:
 
         return redirect('home')
+
 
 
 
