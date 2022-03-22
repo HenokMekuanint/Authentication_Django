@@ -10,9 +10,14 @@
     <header>
         <nav>
             <ul class="navlinks">
-                                <li> <a href="{% url 'home'%}">home</a></li>
-                                <li><a href="{% url 'signup'%}">signup</a></li>
-                                <li><a href="{% url 'login'%}">login</a></li>
+                                <li> <a href="{% url 'home'%}">Home</a></li>
+                                <li><a href="{% url 'signup'%}">Signup</a></li>
+                                <li><a href="{% url 'login'%}">Login</a></li>
+                                {% if User.is_authencicated %}
+                                <li><a href="">Reset password</a></li>
+                                {% endif %}
+                                <li><a href="">About</a></li>
+                                <li><a href="">Contact us</a></li>
             </ul>
         </nav>
     </header>
